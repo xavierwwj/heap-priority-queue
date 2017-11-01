@@ -1,4 +1,4 @@
-# heap-sort
+# heap-priority-queue
 Context:
 <br />-To build a system that allows hospital patients with their uniquely assigned
 health and illness
