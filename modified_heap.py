@@ -14,9 +14,9 @@ def min_heapify(A, i):
         right = 2*i+2
         if right < len(A):
             # meaning both childs exist
-            if A[i] > A[left]:
-                if A[i] > A[right]:
-                    if A[right] < A[left]:
+            if A[i][0] > A[left][0]:
+                if A[i][0] > A[right][0]:
+                    if A[right][0] < A[left][0]:
                         # smallest = right
                         A[i], A[right] = A[right], A[i]
                         i = right
@@ -29,7 +29,7 @@ def min_heapify(A, i):
                     A[i], A[left] = A[left], A[i]
                     i = left
             else:
-                if A[i] > A[right]:
+                if A[i][0] > A[right][0]:
                     # smallest = right
                     A[i], A[right] = A[right], A[i]
                     i = right
@@ -37,25 +37,12 @@ def min_heapify(A, i):
                     break
         elif left < len(A):
             # meaning only left child exists and left child is a leaf
-            if A[i] > A[left]:
+            if A[i][0] > A[left][0]:
                 A[i], A[left] = A[left], A[i]
             break
         else:
             # meaning no child and this is a leaf
             break
-    """
-    A more concise but slightly less efficient solution
-    
-    if left < len(A) and A[left] < A[i]:
-        smallest = left
-    else:
-        smallest = i
-    if right < len(A) and A[right] < A[smallest]:
-        smallest = right
-    if smallest != i:
-        A[i], A[smallest] = A[smallest], A[i]
-        min_heapify(A, smallest)
-    """
 
 def build_heap(A):
     # given last index n, i.e. n+1 items, floor((n-1)/2) gives the first index
@@ -68,7 +55,7 @@ def insert(A, val):
     A.append(val)
     i = len(A)-1
     parent = floor((i-1)/2)
-    while parent >= 0 and A[i] < A[parent]:
+    while parent >= 0 and A[i][0] < A[parent][0]:
         A[i], A[parent] = A[parent], A[i]
         i = parent
         parent = floor((i-1)/2)
